@@ -32,25 +32,19 @@ public class Game extends Application {
     }
 
     public static void drawCanvas() {
-        setCanvasBounds();
+        //SET CANVAS BOUNDS
+        canvas.setHeight(controller.root.getHeight() - controller.topbar.getMinHeight());
+        canvas.setWidth(controller.root.getWidth());
+
         gc.setFill(Color.GREEN);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         new MainCharacter(50, 50).drawMainCharacter();
     }
 
-    public static void setCanvasBounds() {
-        canvas.setHeight(controller.root.getHeight() - controller.topbar.getMinHeight());
-        canvas.setWidth(controller.root.getWidth());
-    }
-
-
-
-
-
-
     public static void setParent(String fxml) throws IOException {
         scene.setRoot(getParent(fxml));
     }
+
     private static Parent getParent(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(Game.class.getResource(fxml + ".fxml"));
         Parent parent = loader.load();
@@ -61,5 +55,4 @@ public class Game extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
